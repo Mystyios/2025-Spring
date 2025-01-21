@@ -44,7 +44,7 @@ public class DragObject : MonoBehaviour
                         // Start dragging this object if it's the one that was touched
                         isDragging = true;
                         touchID = i;  // Assign the touch ID
-                        offset = transform.position - mainCamera.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, mainCamera.nearClipPlane));
+                        offset = transform.position - mainCamera.ScreenToWorldPoint(new Vector3(touch.position.x, 0, mainCamera.nearClipPlane));
                     }
                 }
             }
