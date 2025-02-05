@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 7335708422059303054}
   - component: {fileID: -4942980716614310783}
   - component: {fileID: 3624690818278553105}
+  - component: {fileID: 917525236376057877}
   m_Layer: 0
-  m_Name: GemToolHDA1
+  m_Name: Gem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,7 +101,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intData: {fileID: 11400000, guid: c5f2ceed4600d5c4abc606e31d7f1074, type: 2}
-  moveSpeed: 20
 --- !u!65 &7335708422059303054
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -187,4 +187,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f4ca25f1519354a87f1e3ebc42560f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyObjectTag: 
+  destroyObjectTag: EndPlatformTrigger
+  checkTag: 1
+--- !u!54 &917525236376057877
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3737607204529622310}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

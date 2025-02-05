@@ -3,7 +3,7 @@ using UnityEngine;
 public class MoveObject : MonoBehaviour
 {
     public IntData intData;
-    public float moveSpeed = 20f;
+    private float moveSpeed;
 
     // Update is called once per frame
     void Update()
