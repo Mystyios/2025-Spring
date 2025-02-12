@@ -8,18 +8,37 @@ public class SimpleCoroutineBehaviour : MonoBehaviour
     public float seconds = 1;
     private WaitForSeconds _waitForSeconds;
     public UnityEvent @event;
+    private Coroutine coroutine;
 
     private void Awake()
     {
         _waitForSeconds = new WaitForSeconds(seconds);
+        StartCoroutine();
     }
 
-    private IEnumerator Start()
+    private IEnumerator SimpleCoroutine()
     {
         while (true)
         {
             yield return _waitForSeconds;
             @event.Invoke();
+        }
+    }
+
+    public void StartCoroutine()
+    {
+        if (coroutine == null)
+        {
+            coroutine = StartCoroutine(SimpleCoroutine());
+        }
+    }
+
+    public void StopCoroutine()
+    {
+        if (coroutine != null)
+        {
+            StopCoroutine(SimpleCoroutine());
+            coroutine = null;
         }
     }
 }

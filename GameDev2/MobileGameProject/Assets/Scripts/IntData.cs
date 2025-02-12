@@ -9,7 +9,8 @@ public class IntData : ScriptableObject
 
     [FormerlySerializedAs("minValueEvent")] public UnityEvent<float> valueOutOfRange;
     [FormerlySerializedAs("updateValueEvent")] public UnityEvent onValueChanged;
-
+    public UnityEvent isZeroEvent;
+    
     public int Value
     {
         get => value;
@@ -47,5 +48,22 @@ public class IntData : ScriptableObject
     {
         if (Value + i < 0) return;
         Value += i;
+    }
+
+    public void IsZero()
+    {
+        if (Value <= 0)
+        {
+            isZeroEvent.Invoke();
+        }
+    }
+
+    public void CompareValueSetHigher(IntData data)
+    {
+        if (Value > data.Value) return;
+        else if (Value < data.Value)
+        {
+            Value = data.Value;
+        }
     }
 }

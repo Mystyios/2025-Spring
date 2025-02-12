@@ -10,14 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4b0e8d3ae8fe4f46b19d2f63073dee9, type: 3}
-  m_Name: Speed
+  m_Name: HighScore
   m_EditorClassIdentifier: 
-  value: 100
+  value: 120
   minValue: 0
-  maxValue: 100
+  maxValue: 2147483647
   valueOutOfRange:
     m_PersistentCalls:
       m_Calls: []
   onValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  isZeroEvent:
     m_PersistentCalls:
       m_Calls: []
