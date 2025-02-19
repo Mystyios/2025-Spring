@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;  // Speed at which the player moves
     public float jumpForce = 10f; // Force applied when jumping
     public float gravityMultiplier = 2f; // Multiplier to increase gravity for the player
+    public int jumpCount = 2;
     private Rigidbody rb;         // Reference to the player's Rigidbody
 
     private bool isGrounded;      // To check if the player is grounded
@@ -21,9 +22,11 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
 
         // Check for mouse click or screen touch to trigger jump
-        if (Input.GetMouseButtonDown(0) && isGrounded)
+        if ((Input.GetMouseButtonDown(0) && isGrounded) || (Input.GetMouseButtonDown(0) && jumpCount > 0))
         {
+            jumpCount--;
             Jump();
+            Debug.Log(jumpCount);
         }
     }
 
@@ -39,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+            jumpCount = 2;
         }
     }
 
