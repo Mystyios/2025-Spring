@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    /*
     void Update()
     {
         // Make the player move constantly to the right
@@ -26,14 +27,16 @@ public class PlayerMovement : MonoBehaviour
         {
             jumpCount--;
             Jump();
-            Debug.Log(jumpCount);
         }
     }
-
-    void Jump()
+    */
+    public void Jump()
     {
-        // Apply a vertical force to the Rigidbody to make the player jump
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        if (isGrounded || jumpCount > 0)
+        {
+            jumpCount--;
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
     }
 
     void OnCollisionStay(Collision collision)

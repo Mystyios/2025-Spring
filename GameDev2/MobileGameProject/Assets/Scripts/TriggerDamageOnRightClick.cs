@@ -5,6 +5,7 @@ public class TriggerDamageOnRightClick : MonoBehaviour
     public float damageAmount = 10f;  // Amount of damage to deal to enemies
     private Collider[] enemiesInRange; // Array to hold enemies inside the trigger
 
+    /*
     void Update()
     {
         // Check for right-click (Mouse Button 1) to trigger the damage action
@@ -13,8 +14,8 @@ public class TriggerDamageOnRightClick : MonoBehaviour
             DealDamageToEnemies();
         }
     }
-
-    void DealDamageToEnemies()
+*/
+    public void DealDamageToEnemies()
     {
         // Get all colliders within the trigger area
         enemiesInRange = Physics.OverlapBox(transform.position, transform.localScale / 2, Quaternion.identity);
