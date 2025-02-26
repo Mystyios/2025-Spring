@@ -32,10 +32,10 @@ public class PlayerMovement : MonoBehaviour
     */
     public void Jump()
     {
-        if (isGrounded || jumpCount > 0)
+        if (jumpCount > 0)
         {
-            jumpCount--;
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            jumpCount--;
         }
     }
 
@@ -44,11 +44,12 @@ public class PlayerMovement : MonoBehaviour
         // Check if the player is on the ground by detecting collision with ground
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isGrounded = true;
+            //isGrounded = true;
             jumpCount = 2;
         }
     }
 
+    /*
     void OnCollisionExit(Collision collision)
     {
         // If the player leaves the ground, it's no longer grounded
@@ -57,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = false;
         }
     }
-
+*/
     void FixedUpdate()
     {
         // Apply custom gravity multiplier
