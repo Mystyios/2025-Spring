@@ -8,7 +8,7 @@ public class ObstacleSpawner : MonoBehaviour
     public float spawnInterval = 2f; // Time interval between spawns
     public float minHeight = -2f; // Minimum height for obstacle spawn
     public float maxHeight = 2f;  // Maximum height for obstacle spawn
-    public float obstacleSpeed = 5f; // Speed at which the obstacles move to the left
+    public FloatData obstacleSpeed; // Speed at which the obstacles move to the left
     public Transform playerTransform; // Reference to the player's transform to determine when to spawn obstacles
 
     private Queue<GameObject> obstaclePool = new Queue<GameObject>(); // Pool of reusable obstacles
@@ -34,7 +34,7 @@ public class ObstacleSpawner : MonoBehaviour
             obstacle.transform.position = new Vector3(playerTransform.position.x + 20f, randomHeight, 0); // Spawns slightly off-screen to the right
 
             // Set the obstacle's speed (moving left)
-            obstacle.GetComponent<Obstacle>().SetSpeed(obstacleSpeed);
+            //obstacle.GetComponent<Obstacle>().SetSpeed(obstacleSpeed.Value);
 
             // Wait for the next spawn
             yield return new WaitForSeconds(spawnInterval);
