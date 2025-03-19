@@ -9,15 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e915c2f4e4460c458e3a18bc09d27dd, type: 3}
-  m_Name: HighScore
+  m_Script: {fileID: 11500000, guid: 8fecf1542affac246b75dc68a4ded7e4, type: 3}
+  m_Name: Gems
   m_EditorClassIdentifier: 
-  value: 155
+  value: 15
   minValue: 0
-  maxValue: 1e+10
+  maxValue: 9999999
   valueOutOfRange:
     m_PersistentCalls:
       m_Calls: []
   onValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  isZeroEvent:
     m_PersistentCalls:
       m_Calls: []

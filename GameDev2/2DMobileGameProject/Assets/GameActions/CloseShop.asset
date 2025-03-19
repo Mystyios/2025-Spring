@@ -9,15 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e915c2f4e4460c458e3a18bc09d27dd, type: 3}
-  m_Name: HighScore
+  m_Script: {fileID: 11500000, guid: 126679d62ac949c499cf6a1bab1c9ad6, type: 3}
+  m_Name: CloseShop
   m_EditorClassIdentifier: 
-  value: 155
-  minValue: 0
-  maxValue: 1e+10
-  valueOutOfRange:
-    m_PersistentCalls:
-      m_Calls: []
-  onValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
