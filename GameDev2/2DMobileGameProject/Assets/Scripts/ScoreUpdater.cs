@@ -1,23 +1,29 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;  // Required for coroutines
 
 public class ScoreUpdater : MonoBehaviour
 {
-    public float score;  // Reference to the Score ScriptableObject
+    public float score;
     public TextMeshProUGUI scoreText;
-    private float timeElapsed = 0f;  // Tracks elapsed time
+    
+    private float updateInterval = 0.1f;  // The time interval to update the score
 
-    void Update()
+    void Start()
     {
-        // Update timeElapsed by the time passed since the last frame
-        timeElapsed += Time.deltaTime;
+        // Start the coroutine when the game starts
+        StartCoroutine(ScoreUpdateCoroutine());
+    }
 
-        // If 0.1 seconds have passed, increase the score by 1
-        if (timeElapsed >= 0.1f)
+    // The coroutine that updates the score every 'updateInterval' seconds
+    private IEnumerator ScoreUpdateCoroutine()
+    {
+        while (true)
         {
+            yield return new WaitForSeconds(updateInterval);  // Wait for the specified interval
+
             score += 1.0f;  // Increase the score by 1
-            scoreText.text = score.ToString();
-            timeElapsed = 0f;  // Reset the timer
+            scoreText.text = score.ToString();  // Update the UI text
         }
     }
 }
