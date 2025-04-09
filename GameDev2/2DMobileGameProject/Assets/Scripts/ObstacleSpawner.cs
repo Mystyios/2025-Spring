@@ -59,6 +59,7 @@ public class ObstacleSpawner : MonoBehaviour
     {
         if (obstaclePool.Count > 0)
         {
+            
             GameObject obstacle = obstaclePool.Dequeue();
             obstacle.SetActive(true);
             return obstacle;
