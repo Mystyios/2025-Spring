@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,14 +9,15 @@ public class PlayerMovement : MonoBehaviour
     public float topLimit = 5f; // Top Y position limit (max height)
     public float gravityScaleWhenFalling = 1f; // Gravity scale when falling
     public float gravityScaleWhenMovingUp = 0.1f; // Lower gravity scale when moving up
+    public UnityEvent onTouch, releaseTouch;
 
-    private Rigidbody2D rb;
+    private Rigidbody rb;
     private bool isHolding = false;
     private bool isTapping = false;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -27,36 +29,36 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
+            onTouch.Invoke();
             Touch touch = Input.GetTouch(0);
 
             if (touch.phase == TouchPhase.Began)
             {
-                // Initial upward boost when the screen is first tapped
                 if (transform.position.y < topLimit)
                 {
-                    rb.velocity = Vector2.up * initialBoostForce;
+                    rb.velocity = Vector3.up * initialBoostForce;
                     isTapping = true;
-                    rb.gravityScale = gravityScaleWhenMovingUp;  // Enable upward movement with low gravity
+                    rb.useGravity = true;
+                    Physics.gravity = new Vector3(0f, -9.81f * gravityScaleWhenMovingUp, 0f);
                 }
             }
             else if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
             {
-                // Keep moving upward at a steady pace while the screen is being held
                 if (transform.position.y < topLimit)
                 {
-                    rb.velocity = new Vector2(0f, steadyUpwardSpeed);
-                    rb.gravityScale = gravityScaleWhenMovingUp; // Keep gravity low when moving up
+                    rb.velocity = new Vector3(0f, steadyUpwardSpeed, 0f);
+                    Physics.gravity = new Vector3(0f, -9.81f * gravityScaleWhenMovingUp, 0f);
                 }
                 isHolding = true;
             }
         }
         else
         {
-            // When there is no input, apply falling gravity if not on the ground
             if (!isHolding)
             {
-                rb.gravityScale = gravityScaleWhenFalling;
-                rb.velocity = new Vector2(0f, -fallSpeed);
+                releaseTouch.Invoke();
+                Physics.gravity = new Vector3(0f, -9.81f * gravityScaleWhenFalling, 0f);
+                rb.velocity = new Vector3(0f, -fallSpeed, 0f);
             }
 
             isHolding = false;
@@ -66,9 +68,9 @@ public class PlayerMovement : MonoBehaviour
         // Prevent the player from exceeding the top limit
         if (transform.position.y >= topLimit)
         {
-            rb.velocity = Vector2.zero;
-            transform.position = new Vector2(transform.position.x, topLimit);
-            rb.gravityScale = gravityScaleWhenFalling; // Reset gravity after reaching top
+            rb.velocity = Vector3.zero;
+            transform.position = new Vector3(transform.position.x, topLimit, transform.position.z);
+            Physics.gravity = new Vector3(0f, -9.81f * gravityScaleWhenFalling, 0f);
         }
     }
 }

@@ -29,7 +29,7 @@ public class Obstacle : MonoBehaviour
     }
     
     // This method will be called when another collider enters the trigger zone
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
         // Check if the other collider is the player
         if (other.CompareTag("Player"))

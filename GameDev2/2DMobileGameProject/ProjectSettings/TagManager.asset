@@ -11,8 +11,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - DestroyBarrier
+  - Collectables
   - Player
   - 
   - 
@@ -22,7 +22,7 @@ TagManager:
   - Ground
   - 
   - 
-  - Collectables
+  - 
   - 
   - 
   - 

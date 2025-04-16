@@ -7,7 +7,7 @@ public class SimpleTriggerEventBehavior : MonoBehaviour
     public string ObjectTag;
     public bool checkTag = false;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
         if (checkTag)
         {
